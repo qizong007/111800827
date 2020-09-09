@@ -31,7 +31,7 @@ public class AnswerProcessor {
      * @param outputPath 输出文件路径
      * @param result 字符串形式传入结果
      */
-    private static void output(String outputPath,String result){
+    public static void output(String outputPath,String result){
         File f = new File(outputPath);
         try (FileWriter fr = new FileWriter(f)) {
             String data = result;
