@@ -1,8 +1,10 @@
+import org.junit.Test;
 import java.io.File;
 
-public class TestForAll {
+public class TestCase {
 
-    static void testAllFiles(){
+    @Test
+    public void testAllFiles(){
         File f = new File("tests");
         String[] files = f.list();
         int cnt = 1;
@@ -15,7 +17,4 @@ public class TestForAll {
         }
     }
 
-    public static void main(String[] args) {
-        testAllFiles();
-    }
 }
