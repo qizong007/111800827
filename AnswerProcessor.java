@@ -18,12 +18,12 @@ public class AnswerProcessor {
      * @param ans LCS算法计算结果
      * @param standardLength 原文文件字数
      */
-    private static String  mockPrint(int ans,int standardLength){
-        float num = (float)ans/standardLength*100;
+    private static String mockPrint(int ans,int standardLength){
+        float num = (float)ans/standardLength;
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         String result = decimalFormat.format(num);
-        System.out.println("查重率为："+result+"%");
-        return result+"%";
+        System.out.println("查重率为："+result);
+        return result;
     }
 
     /**
