@@ -11,7 +11,7 @@
 - 在release文件夹下找到main.jar，按照以下方式运行
 
 ```bash
-# java -jar main.jar [原文文件] [抄袭版论文的文件] [答案文件]
+# java -jar main.jar [原文文件] [抄袭版论文的文件] [答案文件]，如下：
 java -jar main.jar orig.txt orig_0.8_add.txt ans.txt
 ```
 
@@ -24,8 +24,8 @@ java -jar main.jar orig.txt orig_0.8_add.txt ans.txt
 （2020.9.10）
 
 - 补全10个测试类
-- 学习并使用JProfiler这个性能测试工具，并发现Apache家的那个Jaro算法是最耗性能的，要吃75.3%啊啊啊啊啊啊啊啊
-- 修正输出格式，应为**0.80**，而非**80%**
+- 学习并使用JProfiler这个性能测试工具，并发现Apache家的计算Jaro距离算法是最耗性能的，要吃75.3%啊啊啊啊啊啊啊啊
+- 修正输出格式，如：应为**0.80**，而非**80%**
 - 在release中发布最新的可运行jar包
 - 计划明天写异常类以及更新测试类
 
@@ -34,7 +34,7 @@ java -jar main.jar orig.txt orig_0.8_add.txt ans.txt
 （2020.9.9）
 
 - 添加了Junit单元测试模块，新增自动测试全部文本的测试类
-- 在release中发布最新的可运行jar包
+- 在release文件夹中放置了最新的可运行jar包
 - 新发现：运行速度跟jvm有关系，我用Java8跑第一个样例要5.6s，我用Java11就只要3.4s
 - 正在研究怎么用Java配套的性能测试工具，难搞啊...:cry:
 
@@ -62,7 +62,7 @@ java -jar main.jar orig.txt orig_0.8_add.txt ans.txt
 谈谈我的现在的理解：
 
 - 我觉得这道题目重点核心在于算法，需要做语义分析，分词，还需要近义词库，哎，难搞
-- 这么说来似乎用py更友好？我还是决定先用Java！毕竟比较符合软件工业化体系hhh
+- 这么说来似乎用py更友好？我还是决定先用Java！毕竟比较符合软件工业化体系hhh，软工作业好用啊，更贴合整套流程吧应该说是
 
 后期优化想法：
 

@@ -1,5 +1,6 @@
 import com.hankcs.hanlp.seg.common.Term;
 import com.hankcs.hanlp.tokenizer.StandardTokenizer;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -68,9 +69,10 @@ public class AnswerProcessor {
     }
 
     /**
-     * 处理总流程方法
+     * 处理总流程方法（Jaro+LCS）
      * @param orgFileName 原文文件路径
      * @param orgAddFileName 抄袭版论文的文件路径
+     * @param outputPath 输出文件路径
      */
     public static void process(String orgFileName,String orgAddFileName,String outputPath){
         String org = TextProcessor.transferTextToString(orgFileName);
@@ -80,6 +82,47 @@ public class AnswerProcessor {
         int standardLength = orgList.size();
         int ans = AlgorithmProcessor.JaroDisBasedOnLCS(orgList,orgAddList);
         output(outputPath,mockPrint(ans,standardLength));
+        if(ans/standardLength==1.00 && !orgFileName.equals(orgAddFileName)){
+            try {
+                throw new ResultEqualsOneException("非相同文本，查重率怎么会为1呢？");
+            } catch (ResultEqualsOneException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
+    /**
+     * 处理总流程方法（纯Jaro）
+     * @param orgFileName 原文文件路径
+     * @param orgAddFileName 抄袭版论文的文件路径
+     * @param outputPath 输出文件路径
+     */
+    public static void processJustByJaro(String orgFileName,String orgAddFileName,String outputPath){
+        String org = TextProcessor.transferTextToString(orgFileName);
+        String orgAdd = TextProcessor.transferTextToString(orgAddFileName);
+        String result = String.valueOf(StringUtils.getJaroWinklerDistance(org,orgAdd));
+        System.out.println("查重结果为："+result);
+        output(outputPath,result);
+    }
+
+    /**
+     * 处理总流程方法（纯LCS）
+     * @param orgFileName 原文文件路径
+     * @param orgAddFileName 抄袭版论文的文件路径
+     * @param outputPath 输出文件路径
+     */
+    public static void processJustByLCS(String orgFileName,String orgAddFileName,String outputPath){
+        String org = TextProcessor.transferTextToString(orgFileName);
+        String orgAdd = TextProcessor.transferTextToString(orgAddFileName);
+        int standardLength = org.length();
+        int ans = AlgorithmProcessor.LCS(org,orgAdd);
+        output(outputPath,mockPrint(ans,standardLength));
+        if(ans/standardLength==1.00 && !orgFileName.equals(orgAddFileName)){
+            try {
+                throw new ResultEqualsOneException("非相同文本，查重率怎么会为1呢？");
+            } catch (ResultEqualsOneException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

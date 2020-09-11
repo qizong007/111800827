@@ -2,12 +2,47 @@ import org.junit.Test;
 import java.io.File;
 
 /**
- * 10个测试方法
+ * 测试
  */
 public class TestCase {
 
     /**
-     * 测试多个文件
+     * 测试全部样例（纯Jaro）
+     */
+    @Test
+    public void testForAllFilesOnlyJaro(){
+        File f = new File("tests");
+        String[] files = f.list();
+        int cnt = 1;
+        for(String file : files){
+            if(!file.equals("orig.txt")){
+                System.out.println("开始处理"+file);
+                AnswerProcessor.processJustByJaro("tests/orig.txt","tests/"+file,"result/ans"+cnt+".txt");
+                cnt++;
+            }
+        }
+    }
+
+    /**
+     * 测试全部样例（纯LCS）
+     */
+    @Test
+    public void testForAllFilesOnlyLCS(){
+        File f = new File("tests");
+        String[] files = f.list();
+        int cnt = 1;
+        for(String file : files){
+            if(!file.equals("orig.txt")){
+                System.out.println("开始处理"+file);
+                AnswerProcessor.processJustByLCS("tests/orig.txt","tests/"+file,"result/ans"+cnt+".txt");
+                cnt++;
+            }
+        }
+    }
+
+
+    /**
+     * 测试全部样例（Jaro+LCS）
      */
     @Test
     public void testAllFiles(){
@@ -95,6 +130,19 @@ public class TestCase {
         AnswerProcessor.process("tests/orig.txt","tests/orig_0.8_rep.txt","ans.txt");
     }
 
+    /**
+     * 测试相同文本：orig.txt
+     */
+    @Test
+    public void testForSame(){
+        AnswerProcessor.process("tests/orig.txt","tests/orig.txt","ans.txt");
+    }
 
-
+    /**
+     * 测试20%文本添加情况：orig_0.8_add.txt
+     */
+    @Test
+    public void testForAddByLCS(){
+        AnswerProcessor.processJustByLCS("tests/orig.txt","tests/orig_0.8_add.txt","ans.txt");
+    }
 }
