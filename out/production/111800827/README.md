@@ -21,6 +21,12 @@ java -jar main.jar orig.txt orig_0.8_add.txt ans.txt
 
 ## 第三阶段
 
+（2020.9.11）
+
+- 增加若干测试类
+- 增加了一个看似无用的异常类
+- AnswerProcessor中增加了纯Jaro和纯LCS的process方法
+
 （2020.9.10）
 
 - 补全10个测试类

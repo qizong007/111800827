@@ -38,6 +38,7 @@ public class AnswerProcessor {
             String data = result;
             char[] cs = data.toCharArray();
             fr.write(cs);
+            fr.close();
             System.out.println("结果已写入"+outputPath);
         } catch (IOException e) {
             e.printStackTrace();
