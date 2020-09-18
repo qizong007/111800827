@@ -42,7 +42,7 @@ public class TestCase {
 
 
     /**
-     * 测试全部样例（Jaro+LCS）
+     * 测试全部样例（Jaro+LCS）,分词
      */
     @Test
     public void testAllFiles(){
@@ -145,4 +145,5 @@ public class TestCase {
     public void testForAddByLCS(){
         AnswerProcessor.processJustByLCS("tests/orig.txt","tests/orig_0.8_add.txt","ans.txt");
     }
+
 }

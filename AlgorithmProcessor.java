@@ -1,4 +1,3 @@
-import com.hankcs.hanlp.seg.common.Term;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;

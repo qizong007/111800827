@@ -13,6 +13,9 @@
 ```bash
 # java -jar main.jar [原文文件] [抄袭版论文的文件] [答案文件]，如下：
 java -jar main.jar orig.txt orig_0.8_add.txt ans.txt
+
+# 更加推荐的运行方式是
+java -Dfile.encoding=utf-8 -jar main.jar orig.txt orig_0.8_add.txt ans.txt
 ```
 
 
